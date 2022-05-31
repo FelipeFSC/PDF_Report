@@ -18,6 +18,7 @@ import org.vandeseer.easytable.structure.Table.TableBuilder;
 import org.vandeseer.easytable.structure.cell.TextCell;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class ReportPdf {
 
@@ -53,23 +54,38 @@ public class ReportPdf {
         PDImageXObject pdImage = PDImageXObject.createFromFile("inputPhoto.png", doc);
         content.drawImage(pdImage, 0f, 661.10f, 200, 180);
 
+        content.setNonStrokingColor(LIGHT_BLACK_1);
+		content.addRect(0, 0, 200, 660.5f);
+		content.fill();
+
         TableDrawer tableTitle = TableDrawer.builder()
             .table(createBoxTitle(""))
             .startX(15)
-            .startY(660.5f)
+            .startY(650f)
             .build();
         tableTitle.draw(() -> doc, () -> new PDPage(), 72f);
 
         TableDrawer tableTitle_2 = TableDrawer.builder()
-            .table(profileBox(""))
+            .table(profileBox(content, "Contato", 505)) // -25 do Y geral
             .startX(15)
-            .startY(550.5f)
+            .startY(530f)
             .build();
         tableTitle_2.draw(() -> doc, () -> new PDPage(), 72f);
 
-        content.setNonStrokingColor(LIGHT_BLACK_1);
-		content.addRect(0, 0, 200, 660.5f);
-		content.fill();
+        TableDrawer contactData = TableDrawer.builder()
+            .table(contactBox(content, ""))
+            .startX(15)
+            .startY(490f)
+            .build();
+        contactData.draw(() -> doc, () -> new PDPage(), 72f);
+
+
+        TableDrawer tableTitle_3 = TableDrawer.builder()
+            .table(profileBox(content, "Idiomas", 295))
+            .startX(15)
+            .startY(320f)
+            .build();
+        tableTitle_3.draw(() -> doc, () -> new PDPage(), 72f);
 
 
         /*TableDrawer tableTitle1 = TableDrawer.builder()
@@ -85,17 +101,20 @@ public class ReportPdf {
 
     private Table createBoxTitle(String title) {
 		final TableBuilder tableBuilder = Table.builder().addColumnsOfWidth(170).fontSize(8)
-			.textColor(Color.BLACK).font(PDType1Font.HELVETICA).backgroundColor(TESTER)
+			.textColor(Color.BLACK).font(PDType1Font.HELVETICA).backgroundColor(LIGHT_BLACK_1)
             .verticalAlignment(VerticalAlignment.MIDDLE);
 
 		tableBuilder.addRow(Row.builder()
-			.add(TextCell.builder().text("Felipe").build())
-				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(20)
-				.horizontalAlignment(HorizontalAlignment.CENTER).build());
+			.add(TextCell.builder().text("Whinderson").build())
+				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(25).borderColor(Color.BLUE)
+				.horizontalAlignment(HorizontalAlignment.LEFT).build());
         tableBuilder.addRow(Row.builder()
-			.add(TextCell.builder().text("Ferreira").build())
-				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(20)
-				.horizontalAlignment(HorizontalAlignment.CENTER).build());
+			.add(TextCell.builder().text("Nunes").build())
+				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(25).borderColor(Color.BLUE)
+				.horizontalAlignment(HorizontalAlignment.LEFT).build());
+        tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("").build()).fontSize(3).build());
+
         tableBuilder.addRow(Row.builder()
             .add(TextCell.builder().text("Desenvolvedor FULL TALO").build())
                 .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(12)
@@ -104,20 +123,50 @@ public class ReportPdf {
 		return tableBuilder.build();
 	}
 
-    private Table profileBox(String title) {
+    private Table profileBox(PDPageContentStream content, String title, float y) throws IOException {
 		final TableBuilder tableBuilder = Table.builder().addColumnsOfWidth(170).fontSize(8)
-			.textColor(Color.BLACK).font(PDType1Font.HELVETICA).backgroundColor(TESTER)
+			.textColor(Color.BLACK).font(PDType1Font.HELVETICA).backgroundColor(LIGHT_BLACK_1)
             .verticalAlignment(VerticalAlignment.MIDDLE);
 
 		tableBuilder.addRow(Row.builder()
-			.add(TextCell.builder().text("Felipe").build())
+			.add(TextCell.builder().text(title).build())
 				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(20)
-				.horizontalAlignment(HorizontalAlignment.CENTER).build());
-        tableBuilder.addRow(Row.builder()
-			.add(TextCell.builder().text("Ferreira").build())
-				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(20)
-				.horizontalAlignment(HorizontalAlignment.CENTER).build());
+				.horizontalAlignment(HorizontalAlignment.LEFT).build());
+
+        content.setNonStrokingColor(Color.WHITE);
+        content.addRect(15, y, 170, 1);
+        content.fill();
 
 		return tableBuilder.build();
 	}
+
+    private Table contactBox(PDPageContentStream content, String data) {
+        final TableBuilder tableBuilder = Table.builder().addColumnsOfWidth(170).fontSize(8)
+			.textColor(Color.BLACK).font(PDType1Font.HELVETICA).backgroundColor(LIGHT_BLACK_1)
+            .verticalAlignment(VerticalAlignment.MIDDLE);
+
+        float padding = 8;
+
+        tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("felipefenix2000@gmail.com").build())
+                .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(10)
+                .horizontalAlignment(HorizontalAlignment.LEFT).padding(padding).build());
+
+        tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("+55 11 93264-1186").build())
+                .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(10)
+                .horizontalAlignment(HorizontalAlignment.LEFT).padding(padding).build());
+
+        tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("(55)11 5921-2926").build())
+                .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(10)
+                .horizontalAlignment(HorizontalAlignment.LEFT).padding(padding).build());
+
+        tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("São Paulo (SP), Zona Sul - Interlagos").build())
+                .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(10)
+                .horizontalAlignment(HorizontalAlignment.LEFT).padding(padding).build());
+
+        return tableBuilder.build();
+    }
 }
