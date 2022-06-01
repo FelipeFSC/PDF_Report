@@ -51,42 +51,31 @@ public class ReportPdf {
 
         PDPageContentStream content = new PDPageContentStream(doc, page);
 
-        PDImageXObject pdImage = PDImageXObject.createFromFile("inputPhoto.png", doc);
-        content.drawImage(pdImage, 0f, 661.10f, 200, 180);
-
         content.setNonStrokingColor(LIGHT_BLACK_1);
-		content.addRect(0, 0, 200, 660.5f);
+		content.addRect(0, 0, 200, 850f);
 		content.fill();
 
-        TableDrawer tableTitle = TableDrawer.builder()
-            .table(createBoxTitle(""))
-            .startX(15)
-            .startY(650f)
-            .build();
-        tableTitle.draw(() -> doc, () -> new PDPage(), 72f);
-
+        /*
         TableDrawer tableTitle_2 = TableDrawer.builder()
-            .table(profileBox(content, "Contato", 505)) // -25 do Y geral
+            .table(profileBox(content, "Contato", 775)) // -25 do Y geral
             .startX(15)
-            .startY(530f)
+            .startY(800f)
             .build();
-        tableTitle_2.draw(() -> doc, () -> new PDPage(), 72f);
+        tableTitle_2.draw(() -> doc, () -> new PDPage(), 72f); */
 
         TableDrawer contactData = TableDrawer.builder()
             .table(contactBox(content, ""))
             .startX(15)
-            .startY(490f)
+            .startY(800f)
             .build();
         contactData.draw(() -> doc, () -> new PDPage(), 72f);
 
-
-        TableDrawer tableTitle_3 = TableDrawer.builder()
-            .table(profileBox(content, "Idiomas", 295))
-            .startX(15)
-            .startY(320f)
+        TableDrawer tableGeral = TableDrawer.builder()
+            .table(createBoxTitle(""))
+            .startX(215)
+            .startY(800)
             .build();
-        tableTitle_3.draw(() -> doc, () -> new PDPage(), 72f);
-
+        tableGeral.draw(() -> doc, () -> new PDPage(), 72f);
 
         /*TableDrawer tableTitle1 = TableDrawer.builder()
             .table(createBoxTitle("RELATÓRIO ANUAL 2022"))
@@ -100,73 +89,167 @@ public class ReportPdf {
     }
 
     private Table createBoxTitle(String title) {
-		final TableBuilder tableBuilder = Table.builder().addColumnsOfWidth(170).fontSize(8)
-			.textColor(Color.BLACK).font(PDType1Font.HELVETICA).backgroundColor(LIGHT_BLACK_1)
+		final TableBuilder tableBuilder = Table.builder().addColumnsOfWidth(365).fontSize(8)
+			.textColor(Color.BLACK).font(PDType1Font.HELVETICA)//.backgroundColor(LIGHT_BLACK_1)
             .verticalAlignment(VerticalAlignment.MIDDLE);
 
 		tableBuilder.addRow(Row.builder()
-			.add(TextCell.builder().text("Whinderson").build())
-				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(25).borderColor(Color.BLUE)
+			.add(TextCell.builder().text("Jubiscleison Nunes").build())
+				.font(PDType1Font.HELVETICA_BOLD).fontSize(25).borderColor(Color.BLUE)
 				.horizontalAlignment(HorizontalAlignment.LEFT).build());
-        tableBuilder.addRow(Row.builder()
-			.add(TextCell.builder().text("Nunes").build())
-				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(25).borderColor(Color.BLUE)
-				.horizontalAlignment(HorizontalAlignment.LEFT).build());
+
         tableBuilder.addRow(Row.builder()
             .add(TextCell.builder().text("").build()).fontSize(3).build());
 
         tableBuilder.addRow(Row.builder()
             .add(TextCell.builder().text("Desenvolvedor FULL TALO").build())
-                .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(12)
-                .horizontalAlignment(HorizontalAlignment.CENTER).build());
+                .textColor(Color.BLACK).fontSize(10)
+                .horizontalAlignment(HorizontalAlignment.LEFT).build());
 
 		return tableBuilder.build();
 	}
 
     private Table profileBox(PDPageContentStream content, String title, float y) throws IOException {
 		final TableBuilder tableBuilder = Table.builder().addColumnsOfWidth(170).fontSize(8)
-			.textColor(Color.BLACK).font(PDType1Font.HELVETICA).backgroundColor(LIGHT_BLACK_1)
+			.textColor(Color.BLACK).font(PDType1Font.HELVETICA)//.backgroundColor(TESTER)
             .verticalAlignment(VerticalAlignment.MIDDLE);
 
 		tableBuilder.addRow(Row.builder()
 			.add(TextCell.builder().text(title).build())
 				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(20)
 				.horizontalAlignment(HorizontalAlignment.LEFT).build());
-
+/*
         content.setNonStrokingColor(Color.WHITE);
         content.addRect(15, y, 170, 1);
         content.fill();
-
+// */
 		return tableBuilder.build();
 	}
 
     private Table contactBox(PDPageContentStream content, String data) {
         final TableBuilder tableBuilder = Table.builder().addColumnsOfWidth(170).fontSize(8)
-			.textColor(Color.BLACK).font(PDType1Font.HELVETICA).backgroundColor(LIGHT_BLACK_1)
+			.textColor(Color.BLACK).font(PDType1Font.HELVETICA)//.backgroundColor(TESTER)
             .verticalAlignment(VerticalAlignment.MIDDLE);
 
-        float padding = 8;
+        tableBuilder.addRow(Row.builder()
+			.add(TextCell.builder().text("Contato").paddingBottom(10).borderWidthBottom(1).borderColor(Color.WHITE).build())
+				.textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(13).font(PDType1Font.HELVETICA)
+				.horizontalAlignment(HorizontalAlignment.LEFT).build());
+        tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("").build()).fontSize(3).build());
 
         tableBuilder.addRow(Row.builder()
-            .add(TextCell.builder().text("felipefenix2000@gmail.com").build())
-                .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(10)
-                .horizontalAlignment(HorizontalAlignment.LEFT).padding(padding).build());
+        .add(TextCell.builder().text("+55 11 99999-9999").build())
+            .textColor(Color.WHITE).fontSize(9)
+            .horizontalAlignment(HorizontalAlignment.LEFT).build());
+        tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("").build()).fontSize(3).build());
 
         tableBuilder.addRow(Row.builder()
-            .add(TextCell.builder().text("+55 11 93264-1186").build())
-                .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(10)
-                .horizontalAlignment(HorizontalAlignment.LEFT).padding(padding).build());
+            .add(TextCell.builder().text("https://www.linkedin.com/in/felipe-ferreira-768b27182/?jobid=1234").build())
+                .textColor(Color.WHITE).fontSize(9).wordBreak(true)
+                .horizontalAlignment(HorizontalAlignment.LEFT).build());
+        tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("").build()).fontSize(3).build());
 
         tableBuilder.addRow(Row.builder()
-            .add(TextCell.builder().text("(55)11 5921-2926").build())
-                .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(10)
-                .horizontalAlignment(HorizontalAlignment.LEFT).padding(padding).build());
+            .add(TextCell.builder().text("felipefsc.04@gmailc.com").build())
+                .textColor(Color.WHITE).fontSize(9).wordBreak(true)
+                .horizontalAlignment(HorizontalAlignment.LEFT).build());
+        tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("").build()).fontSize(3).build());
 
         tableBuilder.addRow(Row.builder()
-            .add(TextCell.builder().text("São Paulo (SP), Zona Sul - Interlagos").build())
-                .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(10)
-                .horizontalAlignment(HorizontalAlignment.LEFT).padding(padding).build());
+            .add(TextCell.builder().text("São Paulo (SP), Zona, Minha casa aaaaaaaaaaaaaaa").build())
+                .textColor(Color.WHITE).fontSize(9)
+                .horizontalAlignment(HorizontalAlignment.LEFT).build());
 
+
+                tableBuilder.addRow(Row.builder()
+                .add(TextCell.builder().text("").build()).fontSize(3).build());
+                tableBuilder.addRow(Row.builder()
+            .add(TextCell.builder().text("").build()).fontSize(3).build());
+
+            tableBuilder.addRow(Row.builder()
+                .add(TextCell.builder().text("Principais competências").paddingBottom(10).borderWidthBottom(1).borderColor(Color.WHITE).build())
+                    .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(13).font(PDType1Font.HELVETICA)
+                    .horizontalAlignment(HorizontalAlignment.LEFT).build());
+            tableBuilder.addRow(Row.builder()
+                .add(TextCell.builder().text("").build()).fontSize(3).build());
+
+            for (int i=0; i < 5; i++) {
+                if (i < 4) {
+                    tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("- sou fodaaaaa!! seloko, muito foda quebra a linha porraaaaaa").build())
+                        .textColor(Color.WHITE).fontSize(9)
+                        .horizontalAlignment(HorizontalAlignment.LEFT).build());
+                tableBuilder.addRow(Row.builder().height(4f)
+                    .add(TextCell.builder().text("").build()).fontSize(3).build());
+                } else {
+                    tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("- sou fodaaaaa!! seloko, muito foda aiiiii nossaaaa que grossoooo").build())
+                        .textColor(Color.WHITE).fontSize(9)
+                        .horizontalAlignment(HorizontalAlignment.LEFT).build());
+                }
+            }
+
+            tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("").build()).fontSize(3).build());
+                    tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("").build()).fontSize(3).build());
+
+
+            tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("Certificações").paddingBottom(10).borderWidthBottom(1).borderColor(Color.WHITE).build())
+                        .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(13).font(PDType1Font.HELVETICA)
+                        .horizontalAlignment(HorizontalAlignment.LEFT).build());
+                tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("").build()).fontSize(3).build());
+
+            for (int i=0; i < 3; i++) {
+                if (i < 2) {
+                    tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("- sou fodaaaaa!! seloko, muito foda quebra a linha porraaaaaa").build())
+                        .textColor(Color.WHITE).fontSize(9)
+                        .horizontalAlignment(HorizontalAlignment.LEFT).build());
+                tableBuilder.addRow(Row.builder().height(4f)
+                    .add(TextCell.builder().text("").build()).fontSize(3).build());
+                } else {
+                    tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("- sou fodaaaaa!! seloko, muito foda aiiiii nossaaaa que grossoooo").build())
+                        .textColor(Color.WHITE).fontSize(9)
+                        .horizontalAlignment(HorizontalAlignment.LEFT).build());
+                }
+            }
+
+            tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("").build()).fontSize(3).build());
+                    tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("").build()).fontSize(3).build());
+
+
+                    tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("Idiomas").paddingBottom(10).borderWidthBottom(1).borderColor(Color.WHITE).build())
+                        .textColor(Color.WHITE).font(PDType1Font.HELVETICA_BOLD).fontSize(13).font(PDType1Font.HELVETICA)
+                        .horizontalAlignment(HorizontalAlignment.LEFT).build());
+                tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("").build()).fontSize(3).build());
+
+            for (int i=0; i < 6; i++) {
+                if (i < 5) {
+                    tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("- Sou BR FDS").build())
+                        .textColor(Color.WHITE).fontSize(9)
+                        .horizontalAlignment(HorizontalAlignment.LEFT).build());
+                tableBuilder.addRow(Row.builder().height(4f)
+                    .add(TextCell.builder().text("").build()).fontSize(3).build());
+                } else {
+                    tableBuilder.addRow(Row.builder()
+                    .add(TextCell.builder().text("- Mentira sou Anunáqui").build())
+                        .textColor(Color.WHITE).fontSize(9)
+                        .horizontalAlignment(HorizontalAlignment.LEFT).build());
+                }
+            }
         return tableBuilder.build();
     }
 }
