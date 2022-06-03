@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Dados do seu Curriculo</h1>
+    </header>
+
+    <section>
+        <h2>Dados</h2>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nome e sobrenome</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">O que faz</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ex: sou garoto de programa registrado">
+        </div>
+
+        <br><h2>Principais competências</h2>
+        <div class="mb-3">
+            <label for="nomeCompetencia" class="form-label">Competência</label>
+            <input type="email" class="form-control" id="nomeCompetencia" placeholder="Nome">
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-secondary" type="button" onclick="addCompentecia()">Adicionar</button>
+        </div>
+        <div id="competencias">
+            <br>
+        </div>
+
+        <br><h2>Certificações</h2>
+        <div class="mb-3">
+            <label for="nomeCertificacao" class="form-label">Certificação</label>
+            <input type="email" class="form-control" id="nomeCertificacao" placeholder="Nome">
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-secondary" type="button" onclick="addCertificacao()">Adicionar</button>
+        </div>
+        <div id="certicacoes">
+            <br>
+        </div>
+
+        <br><h2>Idiomas</h2>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nome</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+        </div>
+
+        <br><h2>Experiência</h2>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nome</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+        </div>
+
+        <br><h2>Formação acadêmica</h2>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nome</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+        </div>
+
+        <br>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary me-md-2" type="button">Gerar</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>Que legal cara!</p>
+    </footer>
+
+    <script src="js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

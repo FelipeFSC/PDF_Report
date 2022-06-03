@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    background-color: rgb(213, 213, 213);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    color: black;
+    text-align: center;
+    margin: 50px;
+}
+
+section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 60%;
+    margin: auto;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.243);
+}
+
+footer {
+    color: black;
+    text-align: center;
+    margin: 50px;
+}
