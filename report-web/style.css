@@ -24,3 +24,38 @@ footer {
     text-align: center;
     margin: 50px;
 }
+
+.divExp {
+    margin-top: 20px;
+
+    padding-top: 7px;
+    border: 1px solid rgba(167, 167, 167, 0.312);
+    box-shadow: 1px 1px 5px rgba(167, 167, 167, 0.312);
+    font-size: 13px;
+    border-radius: 5px;
+}
+
+.divBtnEditAndDelete {
+    display: flex;
+    margin-top: 7px;
+    margin-bottom: 6px;
+}
+
+.divButtonCenter {
+    justify-content: center;
+    cursor: pointer;
+}
+
+.material-symbols-outlined {
+    color: rgb(104, 103, 103);
+}
+
+.divButtonCenter:hover .btnDeleteHover {
+    color: red;
+    transition: 0.5s;
+}
+
+.divButtonCenter:hover .btnEditHover {
+    color: rgb(1, 255, 6);
+    transition: 0.5s;
+}

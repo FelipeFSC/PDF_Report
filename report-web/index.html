@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,17 +17,25 @@
         <h2>Dados</h2>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Nome e sobrenome</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">O que faz</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ex: sou garoto de programa registrado">
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+            <br>
+            <label for="exampleFormControlInput1" class="form-label">Celular</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+            <br>
+            <label for="exampleFormControlInput1" class="form-label">Linkedin</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+            <br>
+            <label for="exampleFormControlInput1" class="form-label">E-mail</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+            <br>
+            <label for="exampleFormControlInput1" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
         </div>
 
         <br><h2>Principais competências</h2>
         <div class="mb-3">
             <label for="nomeCompetencia" class="form-label">Competência</label>
-            <input type="email" class="form-control" id="nomeCompetencia" placeholder="Nome">
+            <input type="text" class="form-control" id="nomeCompetencia" placeholder="Nome">
         </div>
         <div class="d-grid gap-2">
             <button class="btn btn-secondary" type="button" onclick="addCompentecia()">Adicionar</button>
@@ -35,10 +44,11 @@
             <br>
         </div>
 
+
         <br><h2>Certificações</h2>
         <div class="mb-3">
             <label for="nomeCertificacao" class="form-label">Certificação</label>
-            <input type="email" class="form-control" id="nomeCertificacao" placeholder="Nome">
+            <input type="text" class="form-control" id="nomeCertificacao" placeholder="Nome">
         </div>
         <div class="d-grid gap-2">
             <button class="btn btn-secondary" type="button" onclick="addCertificacao()">Adicionar</button>
@@ -47,22 +57,84 @@
             <br>
         </div>
 
+
         <br><h2>Idiomas</h2>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nome</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+            <label for="nomeIdioma" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeIdioma" placeholder="Nome">
         </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-secondary" type="button" onclick="addIdioma()">Adicionar</button>
+        </div>
+        <div id="idiomas">
+            <br>
+        </div>
+
 
         <br><h2>Experiência</h2>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nome</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+            <label for="nomeEmpresa" class="form-label">Nome da empresa</label>
+            <input type="text" class="form-control" id="nomeEmpresa" placeholder="Nome">
+            <br>
+            <label for="nomeCargo" class="form-label">Cargo</label>
+            <input type="text" class="form-control" id="nomeCargo" placeholder="Nome">
+            <br>
+            <label for="nomeDataInicio" class="form-label">Data de inicio</label>
+            <input type="date" class="form-control" id="nomeDataInicio" placeholder="Nome">
+            <br>
+            <label for="nomeDataFim" class="form-label">Data de saida</label>
+            <input type="date" class="form-control" id="nomeDataFim" placeholder="Nome">
+            <br>
+            <label for="nomeEndereco" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="nomeEndereco" placeholder="Nome">
         </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-secondary" type="button" onclick="addExperiencia()">Adicionar</button>
+        </div>
+        <div id="experiencias">
+
+        </div>
+
 
         <br><h2>Formação acadêmica</h2>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nome</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+            <label for="nomeInstituicao" class="form-label">Nome do curso/escola</label>
+            <input type="text" class="form-control" id="nomeInstituicao" placeholder="Nome">
+            <br>
+            <label for="tipoCurso" class="form-label">Tipo</label>
+            <input type="text" class="form-control" id="tipoCurso" placeholder="Nome">
+            <br>
+            <label for="nomeCurso" class="form-label">Curso</label>
+            <input type="text" class="form-control" id="nomeCurso" placeholder="Nome">
+            <br>
+            <label for="inicioCurso" class="form-label">Data de inicio</label>
+            <input type="date" class="form-control" id="inicioCurso" placeholder="Nome">
+            <br>
+            <label for="fimCurso" class="form-label">Data de saida</label>
+            <input type="date" class="form-control" id="fimCurso" placeholder="Nome">
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-secondary" type="button" onclick="addFormacao()">Adicionar</button>
+        </div>
+        <div id="idiomas">
+            <br>
+            <div class="container-sm divExp" id="divExperiencia${contIdExperiencia}">
+                Centro Universitário Senac <br>
+                Graduação, Analise e Desenvolvimento de Sistemas <br>
+                (2019 - 2021) <br>
+                <div class="divBtnEditAndDelete">
+                    <div class="d-grid gap-2 col-6 mx-auto divButtonCenter">
+                        <span class="material-symbols-outlined btnEditHover">
+                            edit
+                        </span>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto divButtonCenter" onclick="removeExperiencia(${contIdExperiencia})">
+                        <span class="material-symbols-outlined btnDeleteHover">
+                            delete
+                        </span>
+                    </div>
+                </div>
+           </div>
         </div>
 
         <br>
